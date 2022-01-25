@@ -21,12 +21,26 @@ Employee.prototype.salary = function(){
     }else if(this.level== "Junior"){
         randSalary = (Math.random() * (1000 - 500 + 1)) + 500;
     }
-    netSalary = randSalary + (randSalary*0.075) ; 
+    netSalary = randSalary - (randSalary*0.075) ; 
     this.salary1 = netSalary ; 
 }
 
 Employee.prototype.render = function(){
-    document.write(`<p> ${this.fullName}      ${this.salary1}</p>`);
+  //  document.write(`<p> ${this.fullName}      ${this.salary1}</p>`);
+  //document.getElementById("pId").innerHTML = `${this.fullName} ${this.salary1} `;
+  // create my text
+     let sHeader = document.createTextNode(`${this.fullName} ${this.salary1}`);
+
+// create an element for the text and append it
+    let spanHeader = document.createElement('p');
+    spanHeader.appendChild(sHeader);
+
+// grab a reference to the div header/var divHeader = document.getElementById('pId');
+    var divHeader = document.getElementById('pId');
+
+// append the new element to the header
+    divHeader.appendChild(spanHeader);
+
 }
 
 let emp1 = new Employee(1000,"Ghazi Samer","Administration","Senior");
@@ -44,9 +58,21 @@ emp6.salary();
 let emp7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior");
 emp7.salary();
 
-document.write(`<p> Note : I don't know why it is write under the footer ?</p>`)
 
-document.write(`<p> Full Name      Net_Salary</p>`)
+//document.write(`<p> Full Name      Net_Salary</p>`);
+// create my text
+let sHeader = document.createTextNode(`Full Name      Net_Salary`);
+
+// create an element for the text and append it
+    let spanHeader = document.createElement('p');
+    spanHeader.appendChild(sHeader);
+
+// grab a reference to the div header/var divHeader = document.getElementById('pId');
+    var divHeader = document.getElementById('pId');
+
+// append the new element to the header
+    divHeader.appendChild(spanHeader);
+    
 emp1.render();
 emp2.render();
 emp3.render();
@@ -54,4 +80,20 @@ emp4.render();
 emp5.render();
 emp6.render();
 emp7.render();
+
+//
+// create my text
+//var sHeader = document.createTextNode(`Full Name      Net_Salary`);
+
+// create an element for the text and append it
+// var spanHeader = document.createElement('p');
+// spanHeader.appendChild(sHeader);
+
+// grab a reference to the div header
+//var divHeader = document.getElementById('pId');
+
+// append the new element to the header
+//divHeader.appendChild(spanHeader);
+
+//divHeader.appendChild(`<p> ${emp1.render()} </p>`);
 
