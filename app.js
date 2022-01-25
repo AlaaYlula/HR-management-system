@@ -29,17 +29,23 @@ Employee.prototype.render = function(){
   //  document.write(`<p> ${this.fullName}      ${this.salary1}</p>`);
   //document.getElementById("pId").innerHTML = `${this.fullName} ${this.salary1} `;
   // create my text
-     let sHeader = document.createTextNode(`${this.fullName} ${this.salary1}`);
+  //   let sHeader = document.createTextNode(`${this.fullName} ${this.salary1}`);
 
 // create an element for the text and append it
-    let spanHeader = document.createElement('p');
-    spanHeader.appendChild(sHeader);
+   // let spanHeader = document.createElement('p');
+   // spanHeader.appendChild(sHeader);
 
 // grab a reference to the div header/var divHeader = document.getElementById('pId');
-    var divHeader = document.getElementById('pId');
+   // var divHeader = document.getElementById('pId');
 
 // append the new element to the header
-    divHeader.appendChild(spanHeader);
+  //  divHeader.appendChild(spanHeader);
+   // creat paragraph
+   let p = document.createElement(`p`);
+   // create content
+   p.textContent = `${this.fullName} ${this.salary1}`;
+   //4 we append th p to section
+   sec.appendChild(p);
 
 }
 
@@ -60,19 +66,16 @@ emp7.salary();
 
 
 //document.write(`<p> Full Name      Net_Salary</p>`);
-// create my text
-let sHeader = document.createTextNode(`Full Name      Net_Salary`);
-
-// create an element for the text and append it
-    let spanHeader = document.createElement('p');
-    spanHeader.appendChild(sHeader);
-
-// grab a reference to the div header/var divHeader = document.getElementById('pId');
-    var divHeader = document.getElementById('pId');
-
-// append the new element to the header
-    divHeader.appendChild(spanHeader);
+    // where 1
+    let sec = document.getElementById('section_java');
+    // 2 creat paragraph tag
+    let p = document.createElement(`p`);
+    // 3 create content
+    p.textContent = `Full Name      Net_Salary`;
     
+    // 4 we append th p to section
+    sec.appendChild(p);
+
 emp1.render();
 emp2.render();
 emp3.render();
