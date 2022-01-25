@@ -11,9 +11,8 @@
   
  .grid-container{
     display: grid;
-    grid-template-rows: 80px 1fr 1fr 80px;
-    grid-template-columns: 1fr ;
-    
+    grid-template-rows: 80px 1fr 1fr  80px;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
  }
  
  
@@ -53,7 +52,8 @@
      grid-column: 1 / -1;
      grid-row: 2 / 3;
      background-color: #EFDAD7;
-  }
+
+   }
  .formset{    /*////////////////////////////////////////////////////////////////////////*/
     padding: 20px;
  }
