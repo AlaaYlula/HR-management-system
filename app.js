@@ -1,35 +1,23 @@
 "use strict"
 
-function Employee(empId,fullName,department,level){
+function Employee(empId,fullName,department,level,img){
     this.employeeID = empId ; 
     this.fullName = fullName;
     this.department=department;
     this.level=level;
     this.salary1=0;
-    this.imgPat=`./Images/${this.employeeID.png}`;
+    this.imgPat=img;
     
 }
 function getRandom(min,max)
 {
     return (Math.random() * (max - min + 1)) + min ;
 }
-/*
-function getNetSalary(emp1)
-{
-    let netSalary;
-    let randSalary;
-    if(this.level== "Senior"){
-        randSalary = getRandom(1500,2000) ;
-    }else if(this.level== "Mid-Senior"){
-        randSalary= getRandom(1000,1500);
 
-    }else if(this.level== "Junior"){
-        randSalary = getRandom(500,1000);
-    }
-    netSalary = randSalary - (randSalary*0.075) ; 
-    return netSalary;
-}
-*/
+let sectionAdd = document.getElementById('sectionAdd'); ///////////////////////////// get section
+
+let sectionInfo = document.getElementById('sectionInfo'); 
+
 Employee.prototype.salary = function(){
    
     let netSalary;
@@ -43,19 +31,70 @@ Employee.prototype.salary = function(){
         randSalary = getRandom(500,1000);
     }
     netSalary = randSalary - (randSalary*0.075) ; 
-    this.salary1 =netSalary ; 
+    this.salary1 =Math.floor(netSalary); 
 
 }
 
 Employee.prototype.render = function(){
 
+    // Card
+    let div = document.createElement('div');
+
+    div.style.backgroundColor = "#FDEBF7";
+    div.style.border= "thick solid #1572A1";
+    div.style.borderRadius ="12px";
+    div.style.padding = "8px";
+    div.style.width = "400px";
+    div.style.height = "500px";
+
+   // div.style.display = "flex";
+    //div.style.justifyContent = "center";
+    
+    sectionAdd.appendChild(div);
+    //Img >> div
+    let img = document.createElement('img');
+    img.setAttribute('src', `${this.imgPat}`);
+    img.setAttribute('alt',`${this.name}`);      ////////////////////////////////////////////////////
+    img.style.width = "300px";
+    img.style.height= "300px";
+    //img.style.display = "inline-block";
+    div.appendChild(img);
+
+    //div2 >> div
+    let div2 = document.createElement('div');
+    div.appendChild(div2);
+    div2.style.fontFamily ="'Dongle', sans-serif";
+    div2.style.fontSize = "30px";
+    div2.style.fontWeight = "bold";
+    //div2.style.display = "inline-block";
+
+    //p name Id >> div2
+    let p = document.createElement('p');
+    p.style.color = "#1572A1";
+    p.textContent = `Name: ${this.fullName} - ID: ${this.employeeID} ` ;
+    div2.appendChild(p);
+
+    // p2 Department level >> div2
+    let p2 = document.createElement('p');
+    p2.textContent = `Department: ${this.department} - Level: ${this.level} ` ;
+    p2.style.color = "#1572A1";
+    div2.appendChild(p2);
+
+   // p3 Salary >> div2
+    let p3 = document.createElement('p');
+     p3.textContent = `${this.salary1}` ;
+     p3.style.color = "#1572A1";
+     div2.appendChild(p3);
+
+
+    /*task7:
     // 2 create paragraph
    let p = document.createElement(`p`);
    // 3 create content
    p.textContent = `${this.fullName} ${this.salary1}`;
    //4 we append the p to section
    sec.appendChild(p);
-
+*/
   //  document.write(`<p> ${this.fullName}      ${this.salary1}</p>`);
   //document.getElementById("pId").innerHTML = `${this.fullName} ${this.salary1} `;
   // create my text
@@ -74,6 +113,32 @@ Employee.prototype.render = function(){
    
 }
 
+
+function getId(){
+    let val = Math.floor(1000 + Math.random() * 9000);
+    //console.log(val);
+    return val;
+}
+function handelSubmit(event) {
+    event.preventDefault();
+    let empId = getId();
+    //console.log(empId);
+    let fullName = event.target.name.value;
+    let department=event.target.department.value;
+    let level = event.target.level.value;
+    let img = event.target.imgurl.value; ///////////////////////////////////////////////////////////////////////
+    console.log(img);
+    let newEmployee = new Employee(empId,fullName, department,level,img);
+
+    newEmployee.salary();
+    newEmployee.render();
+}
+
+
+
+sectionInfo.addEventListener('submit', handelSubmit);
+
+/*
 let emp1 = new Employee(1000,"Ghazi Samer","Administration","Senior");
 emp1.salary();
 let emp2 = new Employee(1001,"Lana Ali","Finance","Senior");
@@ -88,8 +153,8 @@ let emp6 = new Employee(1005,"Rana Saleh","Development","Junior");
 emp6.salary();
 let emp7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior");
 emp7.salary();
-
-
+*/
+/*
 //document.write(`<p> Full Name      Net_Salary</p>`);
     // where 1
     let sec = document.getElementById('section_java');
@@ -99,7 +164,8 @@ emp7.salary();
     p.textContent = `Full Name      Net_Salary`;
     // 4 we append th p to section
     sec.appendChild(p);
-
+*/
+/*
 emp1.render();
 emp2.render();
 emp3.render();
@@ -108,5 +174,5 @@ emp5.render();
 emp6.render();
 emp7.render();
 
-
+*/
 
