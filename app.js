@@ -9,20 +9,42 @@ function Employee(empId,fullName,department,level){
     this.imgPat=`./Images/${this.employeeID.png}`;
     
 }
-
-Employee.prototype.salary = function(){
+function getRandom(min,max)
+{
+    return (Math.random() * (max - min + 1)) + min ;
+}
+/*
+function getNetSalary(emp1)
+{
     let netSalary;
     let randSalary;
     if(this.level== "Senior"){
-        randSalary =(Math.random() * (2000 - 1500 + 1)) + 1500 ;
+        randSalary = getRandom(1500,2000) ;
     }else if(this.level== "Mid-Senior"){
-        randSalary= (Math.random() * (1500 - 1000 + 1)) + 1000;
+        randSalary= getRandom(1000,1500);
 
     }else if(this.level== "Junior"){
-        randSalary = (Math.random() * (1000 - 500 + 1)) + 500;
+        randSalary = getRandom(500,1000);
     }
     netSalary = randSalary - (randSalary*0.075) ; 
-    this.salary1 = netSalary ; 
+    return netSalary;
+}
+*/
+Employee.prototype.salary = function(){
+   
+    let netSalary;
+    let randSalary;
+    if(this.level== "Senior"){
+        randSalary = getRandom(1500,2000) ;
+    }else if(this.level== "Mid-Senior"){
+        randSalary= getRandom(1000,1500);
+
+    }else if(this.level== "Junior"){
+        randSalary = getRandom(500,1000);
+    }
+    netSalary = randSalary - (randSalary*0.075) ; 
+    this.salary1 =netSalary ; 
+
 }
 
 Employee.prototype.render = function(){
