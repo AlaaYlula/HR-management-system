@@ -253,7 +253,7 @@ function render(arr) {
 
             let div = document.createElement('div');
 
-            div.style.backgroundColor = "#FFFDDE";
+            div.style.backgroundColor = "#CDDEFF";
             div.style.border = "thick solid #1572A1";
             div.style.borderRadius = "12px";
             div.style.padding = "8px";
