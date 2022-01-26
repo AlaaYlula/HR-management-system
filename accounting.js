@@ -115,7 +115,7 @@ if(isNaN(avgmark)){
 } 
 avgdev = Math.floor(totalSdev/devCount);
 if(isNaN(avgdev)){
-    avgdiv = "";
+    avgdev = "";
 } 
 avgfin = Math.floor(totalSfin/finCount);
 if(isNaN(avgfin)){
