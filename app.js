@@ -84,9 +84,11 @@ Employee.prototype.render = function(){
         div.style.border= "thick solid #1572A1";
         div.style.borderRadius ="12px";
         div.style.padding = "8px";
-        div.style.width = "400px";
-        div.style.height = "500px";
+        div.style.width = "500px";
+        div.style.height = "600px";
         div.style.textAlign = "center";
+        div.style.margin="0 auto" // to page center 
+
        // div.style.display = "flex";
         //div.style.justifyContent = "center";
         
@@ -135,9 +137,10 @@ Employee.prototype.render = function(){
         div.style.border= "thick solid #1572A1";
         div.style.borderRadius ="12px";
         div.style.padding = "8px";
-        div.style.width = "400px";
-        div.style.height = "500px";
+        div.style.width = "500px";
+        div.style.height = "600px";
         div.style.textAlign = "center";
+        div.style.margin="0 auto" // to page center 
 
        // div.style.display = "flex";
         //div.style.justifyContent = "center";
@@ -188,9 +191,10 @@ Employee.prototype.render = function(){
         div.style.border= "thick solid #1572A1";
         div.style.borderRadius ="12px";
         div.style.padding = "8px";
-        div.style.width = "400px";
-        div.style.height = "500px";
+        div.style.width = "500px";
+        div.style.height = "600px";
         div.style.textAlign = "center";
+        div.style.margin="0 auto" // to page center 
 
        // div.style.display = "flex";
         //div.style.justifyContent = "center";
@@ -236,17 +240,16 @@ Employee.prototype.render = function(){
 
         let div = document.createElement('div');
 
-        div.style.backgroundColor = "#D9D7F1";
+        div.style.backgroundColor = "#FFFDDE";
         div.style.border= "thick solid #1572A1";
         div.style.borderRadius ="12px";
         div.style.padding = "8px";
-        div.style.width = "400px";
-        div.style.height = "500px";
+        div.style.width = "500px";
+        div.style.height = "600px";
         div.style.textAlign = "center";
-
+        div.style.margin="0 auto" // to page center 
        // div.style.display = "flex";
         //div.style.justifyContent = "center";
-        
         sectionAdd4.appendChild(div);  //////////////////////////4//////////////////////////
         //Img >> div
         let img = document.createElement('img');
@@ -285,29 +288,6 @@ Employee.prototype.render = function(){
     
     
     }
-/*
-    task7:
-    // 2 create paragraph
-   let p = document.createElement(`p`);
-   // 3 create content
-   p.textContent = `${this.fullName} ${this.salary1}`;
-   //4 we append the p to section
-   sec.appendChild(p);
-*/
-  //  document.write(`<p> ${this.fullName}      ${this.salary1}</p>`);
-  //document.getElementById("pId").innerHTML = `${this.fullName} ${this.salary1} `;
-  // create my text
-  //   let sHeader = document.createTextNode(`${this.fullName} ${this.salary1}`);
-
-  //create an element for the text and append it
-    // let spanHeader = document.createElement('p');
-    // spanHeader.appendChild(sHeader);
-
-  // grab a reference to the div header/var divHeader = document.getElementById('pId');
-     // var divHeader = document.getElementById('pId');
-
-  // append the new element to the main
-  //  divHeader.appendChild(spanHeader);
 
 }
 
