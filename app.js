@@ -1,4 +1,9 @@
-"use strict"
+'use strict';
+
+////////////////////////////
+let employeeArray = [];
+checkLocalAndPush();
+///////////////////////////
 
 function Employee(empId,fullName,department,level,img){
     this.employeeID = empId ; 
@@ -9,11 +14,10 @@ function Employee(empId,fullName,department,level,img){
     this.imgPat=img;
     
 }
-function getRandom(min,max)
-{
-    return (Math.random() * (max - min + 1)) + min ;
-}
 
+let sectionInfo = document.getElementById('sectionInfo'); 
+
+//////////////////////////////////////////////////////////////////
 let sectionAdd11 = document.getElementById('mainId'); /////////////1//////////////// get section
 let sectionAdd1 = document.createElement('section');
 sectionAdd11.appendChild(sectionAdd1);
@@ -53,9 +57,13 @@ sectionAdd4.style.gridRow = "3 / 4";
 sectionAdd4.style.display = "auto";
 sectionAdd4.style.alignItems = "center";
 
+//////////////////////////////////////////////////////////////////
 
-let sectionInfo = document.getElementById('sectionInfo'); 
 
+function getRandom(min,max)
+{
+    return (Math.random() * (max - min + 1)) + min ;
+}
 Employee.prototype.salary = function(){
    
     let netSalary;
@@ -73,7 +81,8 @@ Employee.prototype.salary = function(){
 
 }
 
-Employee.prototype.render = function(){
+Employee.prototype.render= function(){
+    
     
    if(this.department== "administration"){
 
@@ -305,50 +314,49 @@ function handelSubmit(event) {
     let level = event.target.level.value;
     let img = event.target.imgurl.value; 
     let newEmployee = new Employee(empId,fullName, department,level,img);
-
     newEmployee.salary();
+
+    // Add For Local Storage //
+    employeeArray.push(newEmployee); // ADD the user input to the origin array
+    let jsonConvert = toJson(); // function to convert the origin array to JSON Format
+    saveToLocalS(jsonConvert);
+    
     newEmployee.render();
+    ////////////////////////////////////
 }
 
 
 
 sectionInfo.addEventListener('submit', handelSubmit);
 
-/*
-let emp1 = new Employee(1000,"Ghazi Samer","Administration","Senior");
-emp1.salary();
-let emp2 = new Employee(1001,"Lana Ali","Finance","Senior");
-emp2.salary();
-let emp3 = new Employee(1002,"Tamara Ayoub","Marketing","Senior");
-emp3.salary();
-let emp4 = new Employee(1003,"Safi Walider","Administration","Mid-Senior");
-emp4.salary();
-let emp5 = new Employee(1004,"Omar Zaid","Development","Senior");
-emp5.salary();
-let emp6 = new Employee(1005,"Rana Saleh","Development","Junior");
-emp6.salary();
-let emp7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior");
-emp7.salary();
-*/
-/*
-//document.write(`<p> Full Name      Net_Salary</p>`);
-    // where 1
-    let sec = document.getElementById('section_java');
-    // 2 creat paragraph tag
-    let p = document.createElement(`p`);
-    // 3 create content
-    p.textContent = `Full Name      Net_Salary`;
-    // 4 we append th p to section
-    sec.appendChild(p);
-*/
-/*
-emp1.render();
-emp2.render();
-emp3.render();
-emp4.render();
-emp5.render();
-emp6.render();
-emp7.render();
+////////////////////////////// Task 9 ////////////////////////
+function checkLocalAndPush(){
+    if(employeeArray.length == 0){
+        let arr = readFromLocalS();
+        if(arr.length !=0)
+        {
+            employeeArray = arr ; 
+        }
+    }
+}
 
-*/
+function readFromLocalS(){
+    let josnArray = localStorage.getItem("employee");
+    let arr = JSON.parse(josnArray); // convert JSON Format to normal
+    if(arr !== null){
+        return arr;
+    }else{
+        return [];
+    }
+}
 
+function toJson(){
+    let josnArray = JSON.stringify(employeeArray); // convert to JSON Format
+    return josnArray;
+}
+
+function saveToLocalS(jsonConvert){
+    localStorage.setItem('employee',jsonConvert);
+}
+
+//render(readFromLocalS());
