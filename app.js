@@ -320,11 +320,8 @@ function getId(){
 function handelSubmit(event) {
     event.preventDefault();
     let empId = getId();
-    //console.log(empId);
     let fullName = event.target.name.value;
     let department=event.target.department.value;
-    //console.log(department);
-
     let level = event.target.level.value;
     let img = event.target.imgurl.value; 
     let newEmployee = new Employee(empId,fullName, department,level,img);
